@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>タイトル</title>
+</head>
+<body>
+<table>
+	<% @stations.each do |station| %>
+	<tr class ="station">
+		<td class="line"><%= station["line"] %></td>
+		<td class="name"><a href="https://www.google.co.jp/maps?q=<%= station["y"]%>,<%= station["x"]%>"><%= station["name"] %></td><td class="line"><%= station["line"] %></a></td>
+		<td class="prev">前の駅▶︎　<%= station["prev"] %></td>
+		<td class="next"> 次の駅▶︎　<%= station["next"] %></td>
+	</tr>
+	<% end %>
+	</table>
+</table>
+</body>
+</html>
