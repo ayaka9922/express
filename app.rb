@@ -61,3 +61,10 @@ post '/:id/update' do
   history.save
   redirect "/"
 end
+
+post '/:id/favomemo' do
+  history = History.find(params[:id])
+  history.memo = params[:memo]
+  history.save
+  redirect "/"
+end
