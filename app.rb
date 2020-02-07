@@ -5,10 +5,17 @@ require 'open-uri'
 require 'json'
 require 'net/http'
 
+require 'sinatra/activerecord'
+require './models'
+
 get '/' do
+  @histories = History.all
   erb :form
 end
+
 get '/list' do
+  History.create!(x: params[:x], y: params[:y])
+
   uri = URI("http://express.heartrails.com/api/json")
   uri.query = URI.encode_www_form({
     method: "getStations",
@@ -34,8 +41,9 @@ get '/api/station' do
     response = {error: "No Station."}
   else
    response = {
-      next: json["response"]["station"][0]["next"],
-      prev: json["response"]["station"][0]["prev"]
+     prev: json["response"]["station"][0]["prev"],
+     next: json["response"]["station"][0]["next"]
+
    }
   end
   json response
