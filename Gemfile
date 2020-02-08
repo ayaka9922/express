@@ -17,6 +17,6 @@ group :production do
   gem 'pg' , '~> 0.21.0'
 end
 
-group :production do
+group :development do
   gem 'sqlite3' , '1.4.1'
 end
